@@ -1,0 +1,373 @@
+<html>
+  <head>
+		<style type="text/css">
+			.textBox {
+				width: 700px;
+			}
+			.scrambledImage {
+				width: 240px;
+				height: 240px;
+				background-color: #ccc;
+				position: static;
+			}
+			.unscrambledImage {
+				width: 240px;
+				height: 240px;
+				background-color: #fcc;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.tile00 {
+				width: 60px;
+				height: 60px;
+				background-color: #003;
+				overflow: hidden;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+			.tile01 {
+				width: 60px;
+				height: 60px;
+				background-color: #006;
+				overflow: hidden;
+				position: absolute;
+				left: 60px;
+				top: 0px;
+			}
+			.tile02 {
+				width: 60px;
+				height: 60px;
+				background-color: #009;
+				overflow: hidden;
+				position: absolute;
+				left: 120px;
+				top: 0px;
+			}
+			.tile03 {
+				width: 60px;
+				height: 60px;
+				background-color: #00c;
+				overflow: hidden;
+				position: absolute;
+				left: 180px;
+				top: 0px;
+			}
+
+			.tile10 {
+				width: 60px;
+				height: 60px;
+				background-color: #030;
+				overflow: hidden;
+				position: absolute;
+				top: 60px;
+				left: 0px;
+			}
+			.tile11 {
+				width: 60px;
+				height: 60px;
+				background-color: #060;
+				overflow: hidden;
+				position: absolute;
+				top: 60px;
+				left: 60px;
+			}
+			.tile12 {
+				width: 60px;
+				height: 60px;
+				background-color: #090;
+				overflow: hidden;
+				position: absolute;
+				top: 60px;
+				left: 120px;
+			}
+			.tile13 {
+				width: 60px;
+				height: 60px;
+				background-color: #0c0;
+				overflow: hidden;
+				position: absolute;
+				top: 60px;
+				left: 180px;
+			}
+
+			.tile20 {
+				width: 60px;
+				height: 60px;
+				background-color: #300;
+				overflow: hidden;
+				position: absolute;
+				top: 120px;
+				left: 0px;
+			}
+			.tile21 {
+				width: 60px;
+				height: 60px;
+				background-color: #600;
+				overflow: hidden;
+				position: absolute;
+				top: 120px;
+				left: 60px;
+			}
+			.tile22 {
+				width: 60px;
+				height: 60px;
+				background-color: #900;
+				overflow: hidden;
+				position: absolute;
+				top: 120px;
+				left: 120px;
+			}
+			.tile23 {
+				width: 60px;
+				height: 60px;
+				background-color: #c00;
+				overflow: hidden;
+				position: absolute;
+				top: 120px;
+				left: 180px;
+			}
+
+			.tile30 {
+				width: 60px;
+				height: 60px;
+				background-color: #30c;
+				overflow: hidden;
+				position: absolute;
+				top: 180px;
+				left: 0px;
+			}
+			.tile31 {
+				width: 60px;
+				height: 60px;
+				background-color: #60c;
+				overflow: hidden;
+				position: absolute;
+				top: 180px;
+				left: 60px;
+			}
+			.tile32 {
+				width: 60px;
+				height: 60px;
+				background-color: #90c;
+				overflow: hidden;
+				position: absolute;
+				top: 180px;
+				left: 120px;
+			}
+			.tile33 {
+				width: 60px;
+				height: 60px;
+				background-color: #c0c;
+				overflow: hidden;
+				position: absolute;
+				top: 180px;
+				left: 180px;
+			}
+
+			#image00 {
+				position: absolute;
+				top: -60px;
+				left: 0px;
+			}
+			#image01 {
+				position: absolute;
+				top: -120px;
+				left: -60px;
+			}
+			#image02 {
+				position: absolute;
+				top: -120px;
+				left: -120px;
+			}
+			#image03 {
+				position: absolute;
+				top: -120px;
+				left: -180px;
+			}
+
+			#image10 {
+				position: absolute;
+				top: -60px;
+				left: -120px;
+			}
+			#image11 {
+				position: absolute;
+				top: -180px;
+				left: -180px;
+			}
+			#image12 {
+				position: absolute;
+				top: 0px;
+				left: -120px;
+			}
+			#image13 {
+				position: absolute;
+				top: -120px;
+				left: 0px;
+			}
+
+			#image20 {
+				position: absolute;
+				top: -60px;
+				left: -180px;
+			}
+			#image21 {
+				position: absolute;
+				top: 0px;
+				left: -60px;
+			}
+			#image22 {
+				position: absolute;
+				top: -180px;
+				left: 0px;
+			}
+			#image23 {
+				position: absolute;
+				top: -180px;
+				left: -60px;
+			}
+
+			#image30 {
+				position: absolute;
+				top: -180px;
+				left: -120px;
+			}
+			#image31 {
+				position: absolute;
+				top: -60px;
+				left: -60px;
+			}
+			#image32 {
+				position: absolute;
+				top: 0px;
+				left: -180px;
+			}
+			#image33 {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+		</style>
+		<script type="text/javascript" language="javascript">
+			function doClick() {
+				var imageUrl = document.getElementById('ImageUrlTextBox').value;
+				var originalImage = document.getElementById('scrambledImageImg');
+				originalImage.src = imageUrl;
+
+				for (var i = 0; i < 4; i++) {
+					for (var j = 0; j < 4; j++) {
+						var image = getImage(i, j);
+						image.src = imageUrl;
+					}
+				}
+			}
+
+			function getImage(x, y) {
+				return document.getElementById('image' + x + '' + y);
+			}
+		</script>
+	</head>
+	<body>
+		<form method="GET" action="#">
+			<table>
+				<tr>
+					<td>
+						&nbsp;
+					</td>
+					<td>
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						OKCupid: "Crazy Blind Date" Image Descrambler
+						<br /><br />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						&nbsp;
+					</td>
+					<td>
+						Instructions:
+						<ul>
+							<li>Right-click the scrambled image</li>
+							<li>Click "Copy Image URL"</li>
+							<li>Paste the image in the Text Box below</li>
+							<li>Click Go</li>
+							<li>Message the attractive ones</li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Image URL:
+					</td>
+					<td>
+						<input
+							type="text"
+							id="ImageUrlTextBox"
+							class="textBox"
+							/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						&nbsp;
+					</td>
+					<td>
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td>
+						&nbsp;
+					</td>
+					<td>
+						<input type="button" value="Go" onclick="doClick();" />
+					</td>
+				</tr>
+			</table>
+		</form>
+		<br /><br />
+		<table>
+			<tr>
+				<td>
+					BEFORE:
+					<br />
+					<div id="scrambledImageDiv" class="scrambledImage" >
+						<img
+							id="scrambledImageImg"
+					</div>
+				</td>
+				<td>
+					AFTER:
+					<br />
+					<div id="unscrambledImageDiv" class="unscrambledImage" >
+						<div id="tile00" class="tile00"><img id="image00" /></div>
+						<div id="tile01" class="tile01"><img id="image01" /></div>
+						<div id="tile02" class="tile02"><img id="image02" /></div>
+						<div id="tile03" class="tile03"><img id="image03" /></div>
+
+						<div id="tile10" class="tile10"><img id="image10" /></div>
+						<div id="tile11" class="tile11"><img id="image11" /></div>
+						<div id="tile12" class="tile12"><img id="image12" /></div>
+						<div id="tile13" class="tile13"><img id="image13" /></div>
+						
+						<div id="tile20" class="tile20"><img id="image20" /></div>
+						<div id="tile21" class="tile21"><img id="image21" /></div>
+						<div id="tile22" class="tile22"><img id="image22" /></div>
+						<div id="tile23" class="tile23"><img id="image23" /></div>
+						
+						<div id="tile30" class="tile30"><img id="image30" /></div>
+						<div id="tile31" class="tile31"><img id="image31" /></div>
+						<div id="tile32" class="tile32"><img id="image32" /></div>
+						<div id="tile33" class="tile33"><img id="image33" /></div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
